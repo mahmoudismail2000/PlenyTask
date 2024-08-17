@@ -1,21 +1,20 @@
-.footer{
-    background-color:#1D2939 ;
-    color: white;
-    padding: 45px 100px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+section{
+    margin: 0px !important;
+    .footer{
+        background-color:#1D2939 ;
+        color: white;
+        padding: 45px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+    .img{
+        display: flex;
+        align-items: center;
     
-}
-.img{
-    display: flex;
-    align-items: center;
-
-}
-.imSpan{
-    margin-left: 5px;
+    }
+    .imSpan{
+        margin-left: 5px;
+    }
 }

@@ -16,7 +16,17 @@
             <span>Home</span>
         </div>
     </div>
-    <div>
+    <div class="accountSide">
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder="Search ....." (input)="onSearch($event)">
+        </div>
+        
+            <div class="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>{{numberOfProductsInCard}}</span>
+            </div>
+        
         <span>Account</span>
 
     </div>

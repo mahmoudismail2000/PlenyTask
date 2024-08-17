@@ -1,1 +1,70 @@
-<p>home works!</p>
+
+<section class="home">
+    <h1>iphone</h1>
+    <span>Home / Products / <span *ngIf="searchWord==''">{{currentCategory}}</span></span>
+    <div>
+    <div class="categories">
+        
+            
+            <div class="radioButtons">
+                <span>Products</span>
+                <label>
+                    <input type="radio" name="categories" checked (click)="getAllProducts()">
+                    All ( {{numberOfAllProducts}} )
+                    
+                </label>
+                <label *ngFor="let item of allCategories,index as i">
+                    <input type="radio" [value]="item.slug" name="categories" (click)="getProductsByCategory(item.slug)">
+                    {{item.name}}   ( {{categories[i].total}} )
+                    
+                </label>
+                
+
+                
+            </div>
+        
+        
+    </div>
+    <div class="products">
+        
+           <div class="product" *ngFor="let product of allProducts.products| paginate: { id: 'productPaginate',
+           itemsPerPage: allProducts.limit,
+           currentPage: allProducts.skip/10,
+           totalItems: allProducts.total}">
+            <img [src]="product.images[0]" [alt]="product.category">
+            <div class="content">
+                <h3>{{product.title}}</h3>
+            <span>{{product.description}}</span>
+            <span class="price"><span class="oldPrice">{{product.price}} USD</span>    <span>{{(product.price-(product.discountPercentage/100)*product.price)| number: '1.2-2' }} USD</span></span>
+            <span>Brand : {{product.brand}}</span>
+            <span>Category : {{product.category}}</span>
+            <span>Int Stock : {{product.stock}}</span>
+            <div class="rating">
+                <div>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;margin-top: 5px;padding-right: 5px;"></i> 
+                    <span>( {{product.rating}} )</span>
+                </div>
+
+            </div>
+            </div>
+            <button (click)="addToCard()">ADD TO CART</button>
+           </div>
+        
+    </div>
+    </div>
+    <div class="pagination">
+        <pagination-controls  id="productPaginate"
+                      (pageChange)="pageChanged($event)"
+                      (pageBoundsCorrection)="pageChanged($event)"
+                      [maxSize]="9"
+                      [directionLinks]="true"
+                      [autoHide]="true"
+                      [responsive]="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      screenReaderPaginationLabel="Pagination"
+                      screenReaderPageLabel="page"
+                      screenReaderCurrentLabel="You're on page">
+</pagination-controls>
+    </div>
+</section>
