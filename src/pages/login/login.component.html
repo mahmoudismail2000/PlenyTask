@@ -1,0 +1,33 @@
+<div class="login">
+    <div class="content">
+        <div>
+            <div class="img">
+                <div class="logo">
+                    <div class="circle">
+        
+                    </div>
+                    <div class="blur">
+        
+                    </div>
+        
+                </div>
+                
+            </div>
+            <h2>Login in to your account</h2>
+            <span>Welcome back! Please enter your details .</span>
+        </div>
+
+   <form [formGroup]="loginFrom" (ngSubmit)="login()">
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email" formControlName="username" #username>
+    <div *ngIf="loginFrom.get('username')?.touched||username.value.length>0">
+        <p *ngIf="loginFrom.get('username')?.getError('required')" class="err">Email is Required</p>
+        <p *ngIf="loginFrom.get('username')?.getError('minlength')" class="err">Email Minlength 5</p>
+        <p *ngIf="loginFrom.get('username')?.getError('maxlength')" class="err">Email Maxlength 15</p>
+    </div>
+    <label for="password">Password</label>
+    <input type="password" id="password" formControlName="password">
+    <button>Sign In</button>
+   </form>
+    </div>
+</div>
